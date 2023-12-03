@@ -1,0 +1,33 @@
+{% load static  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>base</title>
+</head>
+<nav class="shadow-lg">
+    <div class="px-4 mx-auto">
+        <div lass="flex justify-between">
+            <a class="flex" href="">
+                <img class="h-8 w-8" src="{% static 'users/images/social.png'%}" alt="">
+                <span class="font-semibold text-lg text-gray-500">Photo</span>
+            </a>
+        </div>
+        <div class="space-x-1">
+            {% if request.user.is_authenticated %}
+            <a class="py-4 px-2 text-gray-500 font-semibold" href="{% url 'logout' %}">logout</a>
+            {% else %}
+            <a class="py-4 px-2 text-gray-500 font-semibold" href="{% url 'login' %}">login</a>
+            <a class="py-4 px-2 text-gray-500 font-semibold" href="">Link1</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+<body>
+
+    {% block body %}
+    {%  endblock  %}
+</body>
+</html>
